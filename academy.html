@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="uk" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title id="pageTitle">BAVARTZA Academy 📈 | Навчання трейдингу</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff1e27'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            overflow-x: clip;
+            max-width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            background-color: #060608;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: clip;
+            max-width: 100%;
+            min-height: 100dvh;
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        h1, h2, h3, h4, p, span, a, button, div {
+            overflow-wrap: break-word;
+            word-break: normal;
+        }
+
+        .glass-card {
+            background: rgba(15, 16, 22, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 30, 39, 0.2);
+            max-width: 100%;
+        }
+
+        .btn-bavartza-red {
+            background: linear-gradient(135deg, #ff1e27 0%, #80090d 100%);
+            box-shadow: 0 0 20px rgba(255, 30, 39, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-bavartza-red:hover {
+            box-shadow: 0 0 30px rgba(255, 30, 39, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .btn-full-course-banner {
+            background: linear-gradient(90deg, #ff1e27 0%, #c80811 50%, #730005 100%);
+            box-shadow: 0 8px 32px rgba(255, 30, 39, 0.45);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-full-course-banner:hover {
+            box-shadow: 0 12px 42px rgba(255, 30, 39, 0.75);
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #ff1e27 0%, #80090d 100%);
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(255, 30, 39, 0.55);
+        }
+
+        @media (max-width: 1023px) {
+            .btn-bavartza-red:hover,
+            .btn-full-course-banner:hover {
+                transform: none;
+            }
+            a, button {
+                touch-action: manipulation;
+            }
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#ff1e27',
+                            redGlow: '#ff000d',
+                            darkRed: '#80090d',
+                            green: '#00ff66',
+                            greenGlow: '#00cc52',
+                            bgDark: '#060608',
+                            cardBg: '#0f1016'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body class="bg-[#060608] text-slate-200 min-h-screen flex flex-col justify-between selection:bg-brand-red selection:text-white">
+
+    <!-- MAIN HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 glass-card border-b border-brand-red/20 backdrop-blur-xl w-full">
+        <div class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 min-h-20 py-2 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 sm:gap-3">
+
+            <div onclick="location.href='index.html';" class="flex items-center gap-2 sm:gap-3 group cursor-pointer flex-shrink-0 min-w-0" id="logoTitleAttr" title="Натисніть, щоб повернутися на головну">
+                <div class="relative flex items-center justify-center w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-black border-2 border-brand-red shadow-[0_0_15px_rgba(255,30,39,0.5)] transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+                    <svg class="w-4 h-4 sm:w-7 sm:h-7 text-brand-red" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="min-w-0">
+                    <span class="font-heading font-black text-xs sm:text-xl md:text-2xl tracking-wider text-white flex items-center gap-1 group-hover:text-brand-red transition-colors duration-200 whitespace-nowrap">
+                        BAVARTZA <span class="text-brand-red group-hover:text-white transition-colors duration-200">ACADEMY</span>
+                    </span>
+                    <span class="text-[9px] sm:text-[10px] text-gray-400 tracking-widest block uppercase font-mono truncate">@BavartzaAcademyBot</span>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-6 font-semibold text-sm xl:text-base tracking-wide">
+                <a href="index.html" class="hover:text-brand-red transition-colors duration-200 flex items-center gap-2 whitespace-nowrap" data-i18n="nav_home">
+                    <i class="fa-solid fa-house text-brand-red"></i> Головна
+                </a>
+                <a href="https://t.me/BavartzaAcademyBot" target="_blank" rel="noopener noreferrer" class="hover:text-brand-red transition-colors duration-200 flex items-center gap-2 whitespace-nowrap" data-i18n="nav_bot">
+                    <i class="fa-brands fa-telegram text-brand-red"></i> Сигнальний бот
+                </a>
+                <a href="reviews.html" class="hover:text-brand-red transition-colors duration-200 flex items-center gap-2 whitespace-nowrap" data-i18n="nav_reviews">
+                    <i class="fa-solid fa-star text-brand-red"></i> Відгуки
+                </a>
+            </nav>
+
+            <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+                <a href="https://t.me/BavartzaAcademyBot" target="_blank" rel="noopener noreferrer" class="btn-bavartza-red px-3 sm:px-5 py-2.5 min-h-[40px] rounded-xl font-bold text-[11px] sm:text-sm uppercase tracking-wider flex items-center justify-center gap-1.5 sm:gap-2 text-white whitespace-nowrap">
+                    <i class="fa-brands fa-telegram text-sm sm:text-lg"></i>
+                    <span data-i18n="header_cta">Навчальний шлях</span>
+                </a>
+
+                <div class="flex items-center bg-black/85 border border-brand-red/40 rounded-xl p-0.5 sm:p-1 gap-0.5 shadow-inner flex-shrink-0" role="group" aria-label="Language Selector">
+                    <button type="button" onclick="setLanguage('uk')" id="lang-btn-uk" class="lang-btn px-2 sm:px-2.5 py-1.5 min-h-[34px] rounded-lg text-[10px] sm:text-[11px] font-mono font-extrabold uppercase text-gray-300 hover:text-white transition cursor-pointer whitespace-nowrap">UA</button>
+                    <button type="button" onclick="setLanguage('ru')" id="lang-btn-ru" class="lang-btn px-2 sm:px-2.5 py-1.5 min-h-[34px] rounded-lg text-[10px] sm:text-[11px] font-mono font-extrabold uppercase text-gray-300 hover:text-white transition cursor-pointer whitespace-nowrap">RU</button>
+                    <button type="button" onclick="setLanguage('en')" id="lang-btn-en" class="lang-btn px-2 sm:px-2.5 py-1.5 min-h-[34px] rounded-lg text-[10px] sm:text-[11px] font-mono font-extrabold uppercase text-gray-300 hover:text-white transition cursor-pointer whitespace-nowrap">EN</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="py-8 sm:py-10 px-3 sm:px-4 max-w-4xl mx-auto w-full flex-grow fade-in">
+
+        <!-- TOP LESSON HEADER NAV -->
+        <div class="flex items-center justify-between gap-2 mb-8 pb-4 border-b border-brand-red/25">
+            <div class="flex items-center gap-2.5 sm:gap-4 min-w-0">
+                <button type="button" onclick="switchView('list')" class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/60 border border-brand-red/40 flex items-center justify-center text-white hover:bg-brand-red/20 transition cursor-pointer flex-shrink-0">
+                    <i class="fa-solid fa-arrow-left text-sm sm:text-lg"></i>
+                </button>
+                <div class="min-w-0">
+                    <h1 id="viewTitle" class="font-heading font-black text-lg sm:text-3xl text-white uppercase tracking-wide truncate">Урок 1</h1>
+                    <p id="viewSubtitle" class="text-xs sm:text-sm text-gray-400 font-medium truncate">Основи ринку • Що таке ринок</p>
+                </div>
+            </div>
+            <span class="bg-brand-red/20 text-brand-red text-[10px] sm:text-sm font-bold px-3 sm:px-4 py-1.5 rounded-full border border-brand-red/40 uppercase tracking-wider sm:tracking-widest shadow-md flex-shrink-0 whitespace-nowrap" data-i18n="academy_badge">
+                Академія
+            </span>
+        </div>
+
+        <!-- VIEW 1: LESSON 1 CONTENT -->
+        <div id="lessonContent" class="space-y-6">
+            <div class="glass-card rounded-2xl p-5 sm:p-8 border-2 border-brand-red/40 shadow-xl space-y-6">
+                <div class="inline-block text-xs font-mono font-bold text-brand-red uppercase tracking-widest bg-brand-red/10 px-3 py-1 rounded border border-brand-red/30" data-i18n="topic_market">
+                    Ринок
+                </div>
+
+                <h2 class="font-heading font-black text-2xl sm:text-4xl text-white" data-i18n="lesson_1_title">Що таке ринок</h2>
+
+                <div class="p-4 sm:p-6 rounded-2xl bg-black/60 border border-brand-red/25 space-y-4 shadow-inner">
+                    <div class="text-xs uppercase font-mono tracking-widest text-brand-red font-bold" data-i18n="visual_label">Візуально</div>
+                    <div class="h-40 sm:h-44 flex items-center justify-center gap-4 sm:gap-10">
+                        <div class="w-8 sm:w-10 h-20 sm:h-24 bg-brand-green/20 border-2 border-brand-green rounded flex flex-col items-center justify-center relative shadow-[0_0_15px_rgba(0,255,102,0.3)] animate-pulse">
+                            <div class="w-1 h-6 sm:h-8 bg-brand-green absolute -top-2 sm:-top-3"></div>
+                            <div class="w-1 h-6 sm:h-8 bg-brand-green absolute -bottom-2 sm:-bottom-3"></div>
+                        </div>
+                        <div class="w-8 sm:w-10 h-14 sm:h-16 bg-brand-red/20 border-2 border-brand-red rounded flex flex-col items-center justify-center relative shadow-[0_0_15px_rgba(255,30,39,0.3)]">
+                            <div class="w-1 h-5 sm:h-6 bg-brand-red absolute -top-2"></div>
+                            <div class="w-1 h-5 sm:h-6 bg-brand-red absolute -bottom-2"></div>
+                        </div>
+                        <div class="w-8 sm:w-10 h-24 sm:h-28 bg-brand-green/20 border-2 border-brand-green rounded flex flex-col items-center justify-center relative shadow-[0_0_15px_rgba(0,255,102,0.3)]">
+                            <div class="w-1 h-6 sm:h-8 bg-brand-green absolute -top-2 sm:-top-3"></div>
+                            <div class="w-1 h-6 sm:h-8 bg-brand-green absolute -bottom-2 sm:-bottom-3"></div>
+                        </div>
+                        <div class="w-8 sm:w-10 h-14 sm:h-16 bg-brand-red/20 border-2 border-brand-red rounded flex flex-col items-center justify-center relative shadow-[0_0_15px_rgba(255,30,39,0.3)]">
+                            <div class="w-1 h-5 sm:h-6 bg-brand-red absolute -top-2"></div>
+                            <div class="w-1 h-5 sm:h-6 bg-brand-red absolute -bottom-2"></div>
+                        </div>
+                        <div class="w-8 sm:w-10 h-28 sm:h-32 bg-brand-green/20 border-2 border-brand-green rounded flex flex-col items-center justify-center relative shadow-[0_0_15px_rgba(0,255,102,0.3)] animate-pulse">
+                            <div class="w-1 h-8 sm:h-10 bg-brand-green absolute -top-3 sm:-top-4"></div>
+                            <div class="w-1 h-8 sm:h-10 bg-brand-green absolute -bottom-3 sm:-bottom-4"></div>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-300 italic text-center leading-relaxed" data-i18n="visual_caption">
+                        Спочатку аналізуй свічки та ринковий контекст зліва направо: імпульс, пауза, реакція, продовження або розворот.
+                    </p>
+                </div>
+
+                <div class="space-y-4 text-gray-200 text-sm sm:text-lg leading-relaxed font-medium">
+                    <p data-i18n="lesson_p1">Ринок — це організований простір, де покупці та продавці обмінюються активами за узгодженою ціною. В основі будь-якого ринку лежить простий механізм: один хоче купити, інший хоче продати, і вони домовляються про ціну.</p>
+                    <p data-i18n="lesson_p2">Фінансовий ринок працює так само, але замість товарів торгуються валюти, акції, індекси та сировина. Початківець повинен зрозуміти: ринок не рухає одна сила — його рухає сукупність рішень тисяч учасників.</p>
+                    <p data-i18n="lesson_p3">Поширена помилка — думати, що ринок «проти тебе»: він просто відображає баланс між попитом і пропозицією в даний момент. На графіку ринок видно через ціну: вона зростає, коли покупців більше, і зменшується, коли більше продавців.</p>
+                    <p data-i18n="lesson_p4">У демо-режимі Pocket Option ти спостерігаєш за рухом ціни в реальному часі без ризику втрати реальних коштів. Головний практичний висновок: спочатку навчися читати ринок, а не намагайся передбачити його рух.</p>
+                </div>
+
+                <div class="pt-4 border-t border-brand-red/20 flex flex-wrap gap-3">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-green/10 border border-brand-green/30 text-brand-green font-bold text-xs sm:text-sm">
+                        <i class="fa-solid fa-circle-check"></i> <span data-i18n="check_theory">Теорія прочитана</span>
+                    </div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand-green/10 border border-brand-green/30 text-brand-green font-bold text-xs sm:text-sm">
+                        <i class="fa-solid fa-circle-check"></i> <span data-i18n="check_ready">Урок готовий до практики</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 sm:p-6 border border-white/10 shadow-lg flex items-center justify-between gap-4">
+                <div class="min-w-0">
+                    <div class="text-xs font-mono text-gray-400 uppercase font-bold mb-1" data-i18n="what_next_label">Що далі</div>
+                    <div class="text-sm sm:text-base text-white font-bold" data-i18n="what_next_text">Наступний урок відкриється тільки після виконання місії по цій темі. Так прогрес не буде накручуватися однією кнопкою.</div>
+                </div>
+                <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-brand-red/20 border border-brand-red/40 flex items-center justify-center text-brand-red shrink-0">
+                    <i class="fa-solid fa-shield-halved text-lg sm:text-xl"></i>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 sm:p-6 border-2 border-brand-red/30 shadow-xl bg-gradient-to-br from-brand-darkRed/20 to-black">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-red text-white flex items-center justify-center shadow-lg flex-shrink-0">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="font-heading font-black text-white text-sm sm:text-base" data-i18n="mentor_title">AI-МЕНТОР BAVARTZA</div>
+                        <div class="text-xs text-brand-red font-bold uppercase tracking-wider" data-i18n="mentor_sub_lesson">Разбір по темі «Ринок»</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-300 mb-5 leading-relaxed" data-i18n="mentor_prompt">Задай питання по своєму прогресу — ментор пояснить короткими кроками.</p>
+                <div class="flex flex-wrap gap-3">
+                    <button type="button" onclick="openMentorTip('explain')" class="px-4 py-2.5 min-h-[42px] rounded-xl bg-black/60 border border-brand-red/40 text-brand-red hover:bg-brand-red hover:text-white transition font-bold text-xs sm:text-sm flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-sparkles"></i> <span data-i18n="btn_explain_lesson">Пояснити урок</span>
+                    </button>
+                    <button type="button" onclick="openMentorTip('review')" class="px-4 py-2.5 min-h-[42px] rounded-xl bg-black/60 border border-brand-red/40 text-brand-red hover:bg-brand-red hover:text-white transition font-bold text-xs sm:text-sm flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-sparkles"></i> <span data-i18n="btn_what_repeat">Що повторити?</span>
+                    </button>
+                </div>
+                <div id="mentorResponseBox" class="hidden mt-4 p-4 rounded-xl bg-black/80 border border-brand-red/40 text-xs sm:text-sm text-gray-200 leading-relaxed"></div>
+            </div>
+
+            <button type="button" onclick="startMission()" class="w-full btn-bavartza-red py-4 min-h-[52px] rounded-2xl font-black text-sm sm:text-lg uppercase tracking-wider text-center text-white shadow-2xl cursor-pointer flex items-center justify-center gap-3">
+                <span data-i18n="btn_go_mission">Перейти до місії</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- VIEW 2: INTERACTIVE MISSION -->
+        <div id="missionContent" class="hidden space-y-6">
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border border-brand-red/30 shadow-lg flex items-center justify-between gap-3 sm:gap-4">
+                <div class="w-full bg-black/60 rounded-full h-3 overflow-hidden border border-brand-red/30">
+                    <div id="missionProgressBar" class="bg-brand-red h-full w-1/4 transition-all duration-300"></div>
+                </div>
+                <div class="flex items-center gap-2 text-brand-red font-mono font-bold text-xs sm:text-sm bg-brand-red/10 px-3 py-1.5 rounded-xl border border-brand-red/30 shrink-0">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="missionTimer">03:00</span>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 sm:p-8 border-2 border-brand-red/50 shadow-xl space-y-6">
+                <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs font-mono uppercase tracking-widest text-brand-red font-bold bg-brand-red/10 px-3 py-1 rounded border border-brand-red/30" data-i18n="topic_market">Ринок</span>
+                    <span id="questionCounter" class="text-xs font-mono text-gray-400 font-bold uppercase">Запитання 1 / 4</span>
+                </div>
+
+                <div class="p-3 sm:p-4 rounded-2xl bg-[#0e0f14] border border-brand-red/30 relative overflow-hidden flex items-center justify-center shadow-inner">
+                    <div id="missionChartImage" class="w-full max-h-[260px] flex items-center justify-center py-2"></div>
+                </div>
+
+                <h3 id="questionTitle" class="font-heading font-bold text-lg sm:text-2xl text-white leading-snug">
+                    Куди з більшою ймовірністю піде ціна після останньої свічки?
+                </h3>
+
+                <div id="answersContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <button type="button" onclick="answerMission('up')" class="p-4 min-h-[54px] rounded-2xl bg-brand-green/10 border-2 border-brand-green/50 hover:bg-brand-green/20 text-brand-green font-heading font-black text-base sm:text-xl uppercase tracking-wider flex items-center justify-center gap-3 transition cursor-pointer shadow-lg">
+                        <i class="fa-solid fa-arrow-trend-up"></i> <span data-i18n="dir_up">Вгору</span>
+                    </button>
+                    <button type="button" onclick="answerMission('down')" class="p-4 min-h-[54px] rounded-2xl bg-brand-red/10 border-2 border-brand-red/50 hover:bg-brand-red/20 text-brand-red font-heading font-black text-base sm:text-xl uppercase tracking-wider flex items-center justify-center gap-3 transition cursor-pointer shadow-lg">
+                        <i class="fa-solid fa-arrow-trend-down"></i> <span data-i18n="dir_down">Вниз</span>
+                    </button>
+                </div>
+
+                <div id="missionFeedback" class="hidden space-y-4 pt-4 border-t border-white/10">
+                    <div id="feedbackBadge" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-xl font-bold text-sm"></div>
+                    <div class="bg-black/50 p-4 rounded-xl border border-white/5">
+                        <span class="text-xs font-mono text-gray-400 uppercase font-bold block mb-1" data-i18n="breakdown_label">Розбір</span>
+                        <p id="explanationText" class="text-sm text-gray-200 leading-relaxed"></p>
+                    </div>
+                    <button type="button" onclick="nextQuestion()" class="w-full btn-bavartza-red py-3.5 min-h-[48px] rounded-xl font-bold text-sm sm:text-base uppercase tracking-wider text-center block text-white shadow-lg cursor-pointer" data-i18n="btn_next_q">
+                        Наступне запитання &rarr;
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: RESULT -->
+        <div id="resultContent" class="hidden space-y-6">
+            <div id="resultCard" class="glass-card rounded-3xl p-6 sm:p-12 border-2 shadow-2xl text-center space-y-6">
+                <div id="resultIconBox" class="w-20 h-20 rounded-full border-2 flex items-center justify-center text-4xl mx-auto shadow-lg"></div>
+                <div>
+                    <h2 id="resultScoreText" class="font-heading font-black text-3xl sm:text-4xl text-white uppercase tracking-wider">4/4</h2>
+                    <p id="resultStatusText" class="text-base sm:text-lg font-bold mt-1 uppercase tracking-widest text-brand-green">Місія завершена</p>
+                </div>
+                <div class="text-xs sm:text-sm text-gray-300 font-mono">
+                    <span data-i18n="res_correct_label">Правильних відповідей:</span> <span id="correctCount" class="text-brand-green font-bold">0</span> | <span data-i18n="res_wrong_label">Неправильних:</span> <span id="wrongCount" class="text-brand-red font-bold">0</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                    <button type="button" onclick="switchView('list')" class="px-6 py-3.5 min-h-[46px] rounded-xl font-bold text-sm bg-black/60 border border-white/20 text-white hover:bg-white/10 transition cursor-pointer" data-i18n="btn_main_menu">
+                        Головне меню
+                    </button>
+                    <a href="https://t.me/BavartzaAcademyBot" target="_blank" rel="noopener noreferrer" class="btn-bavartza-red px-6 py-3.5 min-h-[46px] rounded-xl font-black text-sm uppercase tracking-wider text-white shadow-lg text-center flex items-center justify-center" data-i18n="btn_next_lesson">
+                        Наступний урок &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl p-5 sm:p-6 border-2 border-brand-red/30 shadow-xl bg-gradient-to-br from-brand-darkRed/20 to-black">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-red text-white flex items-center justify-center shadow-lg flex-shrink-0">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="font-heading font-black text-white text-sm sm:text-base" data-i18n="mentor_title">AI-МЕНТОР BAVARTZA</div>
+                        <div class="text-xs text-brand-red font-bold uppercase tracking-wider" data-i18n="mentor_sub_result">Разбір результатів</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-300 mb-5 leading-relaxed" data-i18n="mentor_prompt">Задай питання по своєму прогресу — ментор пояснить короткими кроками.</p>
+                <div class="flex flex-wrap gap-3">
+                    <button type="button" onclick="openMentorTip('mistakes')" class="px-4 py-2.5 min-h-[42px] rounded-xl bg-black/60 border border-brand-red/40 text-brand-red hover:bg-brand-red/10 transition font-bold text-xs sm:text-sm flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-sparkles"></i> <span data-i18n="btn_analyze_mistakes">Разібрати помилки</span>
+                    </button>
+                    <button type="button" onclick="openMentorTip('review')" class="px-4 py-2.5 min-h-[42px] rounded-xl bg-black/60 border border-brand-red/40 text-brand-red hover:bg-brand-red/10 transition font-bold text-xs sm:text-sm flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-sparkles"></i> <span data-i18n="btn_what_repeat">Що повторити?</span>
+                    </button>
+                </div>
+                <div id="resultMentorResponseBox" class="hidden mt-4 p-4 rounded-xl bg-black/80 border border-brand-red/40 text-xs sm:text-sm text-gray-200 leading-relaxed"></div>
+            </div>
+        </div>
+
+        <!-- ALL OTHER 99 LESSONS BANNER -->
+        <div id="allLessonsSection" class="mt-12 pt-8 border-t border-brand-red/20">
+            <a href="https://t.me/BavartzaAcademyBot" target="_blank" rel="noopener noreferrer" class="btn-full-course-banner w-full py-4 sm:py-5 px-4 sm:px-8 rounded-2xl flex items-center justify-between gap-3 sm:gap-4 text-white group border border-red-400/30">
+                <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-black/30 border border-white/20 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-list text-base sm:text-lg text-white"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <div class="font-heading font-black text-sm sm:text-2xl uppercase tracking-wider leading-tight" data-i18n="full_course_title">
+                            Повний курс (Уроки 2 – 100)
+                        </div>
+                        <div class="text-xs sm:text-sm text-white/85 font-medium mt-0.5" data-i18n="full_course_sub">
+                            Відкрити всі уроки, практику та AI-ментора у Telegram
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0 bg-black/30 px-3 sm:px-4 py-2.5 rounded-xl border border-white/15 group-hover:bg-black/50 transition">
+                    <i class="fa-brands fa-telegram text-base sm:text-lg"></i>
+                    <span class="hidden sm:inline font-mono font-bold text-xs uppercase tracking-wider" data-i18n="open_in_tg">Відкрити в TG</span>
+                    <i class="fa-solid fa-arrow-right text-xs sm:text-sm"></i>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-brand-red/20 py-8 sm:py-10 px-4 mt-14 sm:mt-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center gap-3 justify-center">
+                <div class="w-10 h-10 rounded-full bg-brand-red/20 border border-brand-red flex items-center justify-center text-brand-red font-bold flex-shrink-0">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <div>
+                    <span class="font-heading font-black text-base sm:text-lg text-white">BAVARTZA ACADEMY</span>
+                    <span class="text-xs text-gray-500 block" data-i18n="footer_copy">© 2026 Bavartza Trading Win. Всі права захищено.</span>
+                </div>
+            </div>
+            <div class="text-xs text-gray-400">
+                <span data-i18n="official_bot_label">Офіційний бот академії:</span> <a href="https://t.me/BavartzaAcademyBot" target="_blank" rel="noopener noreferrer" class="text-brand-red font-bold underline">@BavartzaAcademyBot</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const TRANSLATIONS = {
+            uk: {
+                page_title: "BAVARTZA Academy 📈 | Навчання трейдингу",
+                logo_title: "Натисніть, щоб повернутися на головну",
+                nav_home: "Головна",
+                nav_bot: "Сигнальний бот",
+                nav_reviews: "Відгуки",
+                header_cta: "Навчальний шлях",
+                academy_badge: "Академія",
+                topic_market: "Ринок",
+                lesson_1_title: "Що таке ринок",
+                visual_label: "Візуально",
+                visual_caption: "Спочатку аналізуй свічки та ринковий контекст зліва направо: імпульс, пауза, реакція, продовження або розворот.",
+                lesson_p1: "Ринок — це організований простір, де покупці та продавці обмінюються активами за узгодженою ціною. В основі будь-якого ринку лежить простий механізм: один хоче купити, інший хоче продати, і вони домовляються про ціну.",
+                lesson_p2: "Фінансовий ринок працює так само, але замість товарів торгуються валюти, акції, індекси та сировина. Початківець повинен зрозуміти: ринок не рухає одна сила — його рухає сукупність рішень тисяч учасників.",
+                lesson_p3: "Поширена помилка — думати, що ринок «проти тебе»: він просто відображає баланс між попитом і пропозицією в даний момент. На графіку ринок видно через ціну: вона зростає, коли покупців більше, і зменшується, коли більше продавців.",
+                lesson_p4: "У демо-режимі Pocket Option ти спостерігаєш за рухом ціни в реальному часі без ризику втрати реальних коштів. Головний практичний висновок: спочатку навчися читати ринок, а не намагайся передбачити його рух.",
+                check_theory: "Теорія прочитана",
+                check_ready: "Урок готовий до практики",
+                what_next_label: "Що далі",
+                what_next_text: "Наступний урок відкриється тільки після виконання місії по цій темі. Так прогрес не буде накручуватися однією кнопкою.",
+                mentor_title: "AI-МЕНТОР BAVARTZA",
+                mentor_sub_lesson: "Разбір по темі «Ринок»",
+                mentor_sub_result: "Разбір результатів",
+                mentor_prompt: "Задай питання по своєму прогресу — ментор пояснить короткими кроками.",
+                btn_explain_lesson: "Пояснити урок",
+                btn_what_repeat: "Що повторити?",
+                btn_analyze_mistakes: "Разібрати помилки",
+                btn_go_mission: "Перейти до місії",
+                mentor_tip_explain: "AI Ментор: Урок 1 пояснює базову структуру попиту і пропозиції. Ціна рухається туди, де є ліквідність та баланс покупців і продавців.",
+                mentor_tip_review: "AI Ментор: Головне правило — не сперечайся з трендом, читай свічки зліва направо та оцінюй контекст перед входом.",
+                mentor_tip_mistakes: "AI Ментор: Проаналізуй помилки на графіках із сильним імпульсом та звертай увагу на реакцію біля ключових рівнів.",
+                q_counter: (cur, tot) => `Запитання ${cur} / ${tot}`,
+                dir_up: "Вгору",
+                dir_down: "Вниз",
+                correct_badge: "Правильно",
+                wrong_badge: "Неправильно",
+                breakdown_label: "Розбір",
+                btn_next_q: "Наступне запитання →",
+                res_correct_label: "Правильних відповідей:",
+                res_wrong_label: "Неправильних:",
+                btn_main_menu: "Головне меню",
+                btn_next_lesson: "Наступний урок →",
+                res_success: "Місія завершена успішно!",
+                res_timeout: "Час вичерпаний! Місія не завершена",
+                res_low_score: "Місія не завершена (мало правильних)",
+                view_lesson_title: "Урок 1",
+                view_lesson_sub: "Основи ринку • Що таке ринок",
+                view_mission_title: "Місія • Урок 1",
+                view_mission_sub: "Що таке ринок",
+                view_result_title: "Результат місії",
+                view_result_sub: "Урок 1. Що таке ринок",
+                full_course_title: "Повний курс (Уроки 2 – 100)",
+                full_course_sub: "Відкрити всі уроки, практику та AI-ментора у Telegram",
+                open_in_tg: "Відкрити в TG",
+                footer_copy: "© 2026 Bavartza Trading Win. Всі права захищено.",
+                official_bot_label: "Офіційний бот академії:",
+                questions: [
+                    { q: "Куди з більшою ймовірністю піде ціна після останньої свічки?", explanation: "Відмова від опору і зниження імпульсу покупців — ймовірно зниження.", correct: "down" },
+                    { q: "Визначте напрямок після сформованої структури.", explanation: "Серія вищих мінімумів і сильна бичача свічка біля рівня — можливий ріст.", correct: "up" },
+                    { q: "Що говорить поведінка ціни біля рівня?", explanation: "Відмова від опору і зниження імпульсу покупців — ймовірно зниження.", correct: "down" },
+                    { q: "Визначте напрямок руху за останнім патерном.", explanation: "Серія вищих мінімумів і сильна бичача свічка біля рівня — можливий ріст.", correct: "up" }
+                ]
+            },
+            ru: {
+                page_title: "BAVARTZA Academy 📈 | Обучение трейдингу",
+                logo_title: "Нажмите, чтобы вернуться на главную",
+                nav_home: "Главная",
+                nav_bot: "Сигнальный бот",
+                nav_reviews: "Отзывы",
+                header_cta: "Учебный путь",
+                academy_badge: "Академия",
+                topic_market: "Рынок",
+                lesson_1_title: "Что такое рынок",
+                visual_label: "Визуально",
+                visual_caption: "Сначала анализируй свечи и рыночный контекст слева направо: импульс, пауза, реакция, продолжение или разворот.",
+                lesson_p1: "Рынок — это организованное пространство, где покупатели и продавцы обмениваются активами по согласованной цене. В основе любого рынка лежит простой механизм: один хочет купить, другой хочет продать, и они договариваются о цене.",
+                lesson_p2: "Финансовый рынок работает так же, но вместо товаров торгуются валюты, акции, индексы и сырьё. Новичок должен понять: рынок не двигает одна сила — его двигает совокупность решений тысяч участников.",
+                lesson_p3: "Распространённая ошибка — думать, что рынок «против тебя»: он просто отражает баланс между спросом и предложением в данный момент. На графике рынок виден через цену: она растёт, когда покупателей больше, и снижается, когда больше продавцов.",
+                lesson_p4: "В демо-режиме Pocket Option ты наблюдаешь за движением цены в реальном времени без риска потери реальных средств. Главный практический вывод: сначала научись читать рынок, а не пытайся предсказать его движение.",
+                check_theory: "Теория прочитана",
+                check_ready: "Урок готов к практике",
+                what_next_label: "Что дальше",
+                what_next_text: "Следующий урок откроется только после выполнения миссии по этой теме. Так прогресс не будет накручиваться одной кнопкой.",
+                mentor_title: "AI-МЕНТОР BAVARTZA",
+                mentor_sub_lesson: "Разбор по теме «Рынок»",
+                mentor_sub_result: "Разбор результатов",
+                mentor_prompt: "Задай вопрос по своему прогрессу — ментор объяснит короткими шагами.",
+                btn_explain_lesson: "Объяснить урок",
+                btn_what_repeat: "Что повторить?",
+                btn_analyze_mistakes: "Разобрать ошибки",
+                btn_go_mission: "Перейти к миссии",
+                mentor_tip_explain: "AI Ментор: Урок 1 объясняет базовую структуру спроса и предложения. Цена идёт туда, где есть ликвидность и баланс покупателей и продавцов.",
+                mentor_tip_review: "AI Ментор: Главное правило — не спорь с трендом, читай свечи слева направо и оценивай контекст перед входом.",
+                mentor_tip_mistakes: "AI Ментор: Проанализируй ошибки на графиках с сильным импульсом и обращай внимание на реакцию у ключевых уровней.",
+                q_counter: (cur, tot) => `Вопрос ${cur} / ${tot}`,
+                dir_up: "Вверх",
+                dir_down: "Вниз",
+                correct_badge: "Правильно",
+                wrong_badge: "Неправильно",
+                breakdown_label: "Разбор",
+                btn_next_q: "Следующий вопрос →",
+                res_correct_label: "Правильных ответов:",
+                res_wrong_label: "Неправильных:",
+                btn_main_menu: "Главное меню",
+                btn_next_lesson: "Следующий урок →",
+                res_success: "Миссия завершена успешно!",
+                res_timeout: "Время вышло! Миссия не завершена",
+                res_low_score: "Миссия не завершена (мало правильных)",
+                view_lesson_title: "Урок 1",
+                view_lesson_sub: "Основы рынка • Что такое рынок",
+                view_mission_title: "Миссия • Урок 1",
+                view_mission_sub: "Что такое рынок",
+                view_result_title: "Результат миссии",
+                view_result_sub: "Урок 1. Что такое рынок",
+                full_course_title: "Полный курс (Уроки 2 – 100)",
+                full_course_sub: "Открыть все уроки, практику и AI-ментора в Telegram",
+                open_in_tg: "Открыть в TG",
+                footer_copy: "© 2026 Bavartza Trading Win. Все права защищены.",
+                official_bot_label: "Официальный бот академии:",
+                questions: [
+                    { q: "Куда с большей вероятностью пойдёт цена после последней свечи?", explanation: "Отказ от сопротивления и снижение импульса покупателей — вероятно снижение.", correct: "down" },
+                    { q: "Определите направление после сформированной структуры.", explanation: "Серия более высоких минимумов и сильная бычья свеча у уровня — возможен рост.", correct: "up" },
+                    { q: "О чём говорит поведение цены у уровня?", explanation: "Отказ от сопротивления и снижение импульса покупателей — вероятно снижение.", correct: "down" },
+                    { q: "Определите направление движения по последнему паттерну.", explanation: "Серия более высоких минимумов и сильная бычья свеча у уровня — возможен рост.", correct: "up" }
+                ]
+            },
+            en: {
+                page_title: "BAVARTZA Academy 📈 | Trading Education",
+                logo_title: "Click to return to the home page",
+                nav_home: "Home",
+                nav_bot: "Signal Bot",
+                nav_reviews: "Reviews",
+                header_cta: "Learning Path",
+                academy_badge: "Academy",
+                topic_market: "Market",
+                lesson_1_title: "What Is a Market",
+                visual_label: "Visual",
+                visual_caption: "First analyze candles and market context from left to right: impulse, pause, reaction, continuation, or reversal.",
+                lesson_p1: "A market is an organized space where buyers and sellers exchange assets at an agreed price. At the core of every market is a simple mechanism: one wants to buy, another wants to sell, and they agree on a price.",
+                lesson_p2: "Financial markets work the same way, except instead of physical goods, currencies, stocks, indices, and commodities are traded. A beginner must understand: the market isn't moved by a single force—it's driven by the combined decisions of thousands of participants.",
+                lesson_p3: "A common mistake is thinking the market is 'against you': it simply reflects the balance between supply and demand at a given moment. On a chart, the market is visible through price: it rises when buyers outnumber sellers and drops when sellers take control.",
+                lesson_p4: "In Pocket Option's demo mode, you observe price movement in real time without risking real funds. The key practical takeaway: learn to read the market first instead of trying to guess its moves.",
+                check_theory: "Theory read",
+                check_ready: "Lesson ready for practice",
+                what_next_label: "What's Next",
+                what_next_text: "The next lesson unlocks only after completing this topic's mission. That way progress isn't faked with a single click.",
+                mentor_title: "BAVARTZA AI MENTOR",
+                mentor_sub_lesson: "Breakdown on «Market»",
+                mentor_sub_result: "Results Breakdown",
+                mentor_prompt: "Ask a question about your progress—your mentor will explain in short steps.",
+                btn_explain_lesson: "Explain Lesson",
+                btn_what_repeat: "What to Review?",
+                btn_analyze_mistakes: "Analyze Mistakes",
+                btn_go_mission: "Go to Mission",
+                mentor_tip_explain: "AI Mentor: Lesson 1 explains the core structure of supply and demand. Price moves toward liquidity and shifts in buyer/seller balance.",
+                mentor_tip_review: "AI Mentor: Golden rule—don't fight the trend, read candles from left to right, and evaluate context before entering.",
+                mentor_tip_mistakes: "AI Mentor: Review mistakes on strong impulse charts and pay close attention to price reaction near key levels.",
+                q_counter: (cur, tot) => `Question ${cur} / ${tot}`,
+                dir_up: "Up",
+                dir_down: "Down",
+                correct_badge: "Correct",
+                wrong_badge: "Incorrect",
+                breakdown_label: "Breakdown",
+                btn_next_q: "Next Question →",
+                res_correct_label: "Correct answers:",
+                res_wrong_label: "Incorrect:",
+                btn_main_menu: "Main Menu",
+                btn_next_lesson: "Next Lesson →",
+                res_success: "Mission completed successfully!",
+                res_timeout: "Time's up! Mission incomplete",
+                res_low_score: "Mission incomplete (not enough correct answers)",
+                view_lesson_title: "Lesson 1",
+                view_lesson_sub: "Market Basics • What Is a Market",
+                view_mission_title: "Mission • Lesson 1",
+                view_mission_sub: "What Is a Market",
+                view_result_title: "Mission Result",
+                view_result_sub: "Lesson 1. What Is a Market",
+                full_course_title: "Full Course (Lessons 2 – 100)",
+                full_course_sub: "Open all lessons, practice, and AI mentor in Telegram",
+                open_in_tg: "Open in TG",
+                footer_copy: "© 2026 Bavartza Trading Win. All rights reserved.",
+                official_bot_label: "Official academy bot:",
+                questions: [
+                    { q: "Where is price more likely to move after the last candle?", explanation: "Rejection from resistance and fading buyer momentum point to a likely move down.", correct: "down" },
+                    { q: "Identify the direction after the formed structure.", explanation: "A series of higher lows and a strong bullish candle at the level suggest a move up.", correct: "up" },
+                    { q: "What does price behavior at the level indicate?", explanation: "Rejection from resistance and fading buyer momentum point to a likely move down.", correct: "down" },
+                    { q: "Identify the direction based on the latest pattern.", explanation: "A series of higher lows and a strong bullish candle at the level suggest a move up.", correct: "up" }
+                ]
+            }
+        };
+
+        let currentLang = localStorage.getItem('bavartza_lang') || 'uk';
+        let activeView = 'list';
+        let currentQuestion = 1;
+        const totalQuestions = 4;
+        let correctAnswersCount = 0;
+        let wrongAnswersCount = 0;
+        let lastMissionCompleted = true;
+        let timeLeft = 180;
+        let timerInterval = null;
+
+        const chartSVGs = [
+            `<svg viewBox="0 0 350 180" class="w-full h-auto max-h-[210px]">
+                <line x1="0" y1="45" x2="350" y2="45" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="0" y1="90" x2="350" y2="90" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="0" y1="135" x2="350" y2="135" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="20" y1="15" x2="20" y2="45" stroke="#ff1e27" stroke-width="1.5"/><rect x="15" y="20" width="10" height="18" fill="#ff1e27"/>
+                <line x1="74" y1="22" x2="74" y2="52" stroke="#ff1e27" stroke-width="1.5"/><rect x="69" y="26" width="10" height="14" fill="#ff1e27"/>
+                <line x1="128" y1="52" x2="128" y2="92" stroke="#ff1e27" stroke-width="1.5"/><rect x="123" y="60" width="10" height="20" fill="#ff1e27"/>
+                <line x1="182" y1="108" x2="182" y2="138" stroke="#ff1e27" stroke-width="1.5"/><rect x="177" y="112" width="10" height="16" fill="#ff1e27"/>
+                <line x1="236" y1="124" x2="236" y2="152" stroke="#ff1e27" stroke-width="1.5"/><rect x="231" y="130" width="10" height="12" fill="#ff1e27"/>
+                <line x1="290" y1="135" x2="290" y2="172" stroke="#ff1e27" stroke-width="1.5"/><rect x="285" y="146" width="10" height="18" fill="#ff1e27"/>
+            </svg>`,
+            `<svg viewBox="0 0 350 180" class="w-full h-auto max-h-[210px]">
+                <line x1="0" y1="45" x2="350" y2="45" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="0" y1="90" x2="350" y2="90" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="0" y1="135" x2="350" y2="135" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="40" y1="120" x2="40" y2="155" stroke="#00ff66" stroke-width="1.5"/><rect x="35" y="126" width="10" height="18" fill="#00ff66"/>
+                <line x1="100" y1="100" x2="100" y2="132" stroke="#00ff66" stroke-width="1.5"/><rect x="95" y="106" width="10" height="16" fill="#00ff66"/>
+                <line x1="160" y1="82" x2="160" y2="114" stroke="#00ff66" stroke-width="1.5"/><rect x="155" y="88" width="10" height="16" fill="#00ff66"/>
+                <line x1="220" y1="64" x2="220" y2="96" stroke="#00ff66" stroke-width="1.5"/><rect x="215" y="70" width="10" height="16" fill="#00ff66"/>
+                <line x1="280" y1="42" x2="280" y2="76" stroke="#00ff66" stroke-width="1.5"/><rect x="275" y="48" width="10" height="20" fill="#00ff66"/>
+            </svg>`,
+            `<svg viewBox="0 0 350 180" class="w-full h-auto max-h-[210px]">
+                <line x1="0" y1="45" x2="350" y2="45" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="0" y1="90" x2="350" y2="90" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="0" y1="135" x2="350" y2="135" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="50" y1="30" x2="50" y2="62" stroke="#ff1e27" stroke-width="1.5"/><rect x="45" y="36" width="10" height="16" fill="#ff1e27"/>
+                <line x1="110" y1="54" x2="110" y2="88" stroke="#ff1e27" stroke-width="1.5"/><rect x="105" y="60" width="10" height="18" fill="#ff1e27"/>
+                <line x1="170" y1="80" x2="170" y2="112" stroke="#00ff66" stroke-width="1.5"/><rect x="165" y="86" width="10" height="14" fill="#00ff66"/>
+                <line x1="230" y1="96" x2="230" y2="132" stroke="#ff1e27" stroke-width="1.5"/><rect x="225" y="102" width="10" height="20" fill="#ff1e27"/>
+                <line x1="290" y1="124" x2="290" y2="162" stroke="#ff1e27" stroke-width="1.5"/><rect x="285" y="130" width="10" height="20" fill="#ff1e27"/>
+            </svg>`,
+            `<svg viewBox="0 0 350 180" class="w-full h-auto max-h-[210px]">
+                <line x1="0" y1="45" x2="350" y2="45" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="0" y1="90" x2="350" y2="90" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="0" y1="135" x2="350" y2="135" stroke="#2a2e39" stroke-width="1"/>
+                <line x1="50" y1="128" x2="50" y2="158" stroke="#00ff66" stroke-width="1.5"/><rect x="45" y="134" width="10" height="16" fill="#00ff66"/>
+                <line x1="110" y1="102" x2="110" y2="134" stroke="#00ff66" stroke-width="1.5"/><rect x="105" y="108" width="10" height="18" fill="#00ff66"/>
+                <line x1="170" y1="78" x2="170" y2="112" stroke="#ff1e27" stroke-width="1.5"/><rect x="165" y="84" width="10" height="16" fill="#ff1e27"/>
+                <line x1="230" y1="54" x2="230" y2="88" stroke="#00ff66" stroke-width="1.5"/><rect x="225" y="60" width="10" height="18" fill="#00ff66"/>
+                <line x1="290" y1="24" x2="290" y2="62" stroke="#00ff66" stroke-width="1.5"/><rect x="285" y="30" width="10" height="22" fill="#00ff66"/>
+            </svg>`
+        ];
+
+        function applyTranslations(lang) {
+            const dict = TRANSLATIONS[lang] || TRANSLATIONS.uk;
+            document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'ru' ? 'ru' : 'uk');
+            document.title = dict.page_title;
+
+            const logoEl = document.getElementById('logoTitleAttr');
+            if (logoEl) logoEl.title = dict.logo_title;
+
+            document.querySelectorAll('[data-i18n]').forEach((el) => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined && typeof dict[key] === 'string') {
+                    el.innerText = dict[key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach((btn) => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`lang-btn-${lang}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            if (activeView === 'list') {
+                document.getElementById('viewTitle').innerText = dict.view_lesson_title;
+                document.getElementById('viewSubtitle').innerText = dict.view_lesson_sub;
+            } else if (activeView === 'mission') {
+                document.getElementById('viewTitle').innerText = dict.view_mission_title;
+                document.getElementById('viewSubtitle').innerText = dict.view_mission_sub;
+                const qData = dict.questions[currentQuestion - 1];
+                document.getElementById('questionCounter').innerText = dict.q_counter(currentQuestion, totalQuestions);
+                document.getElementById('questionTitle').innerText = qData.q;
+                if (!document.getElementById('missionFeedback').classList.contains('hidden')) {
+                    document.getElementById('explanationText').innerText = qData.explanation;
+                }
+            } else if (activeView === 'result') {
+                document.getElementById('viewTitle').innerText = dict.view_result_title;
+                document.getElementById('viewSubtitle').innerText = dict.view_result_sub;
+                updateResultLabels();
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('bavartza_lang', lang);
+            applyTranslations(lang);
+        }
+
+        function openMentorTip(type) {
+            const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.uk;
+            const boxId = activeView === 'result' ? 'resultMentorResponseBox' : 'mentorResponseBox';
+            const box = document.getElementById(boxId);
+            if (!box) return;
+            if (type === 'explain') box.innerText = dict.mentor_tip_explain;
+            else if (type === 'mistakes') box.innerText = dict.mentor_tip_mistakes;
+            else box.innerText = dict.mentor_tip_review;
+            box.classList.remove('hidden');
+        }
+
+        function switchView(view) {
+            activeView = view;
+            clearInterval(timerInterval);
+            document.getElementById('lessonContent').classList.add('hidden');
+            document.getElementById('missionContent').classList.add('hidden');
+            document.getElementById('resultContent').classList.add('hidden');
+            document.getElementById('allLessonsSection').classList.remove('hidden');
+
+            const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.uk;
+
+            if (view === 'list') {
+                document.getElementById('lessonContent').classList.remove('hidden');
+                document.getElementById('viewTitle').innerText = dict.view_lesson_title;
+                document.getElementById('viewSubtitle').innerText = dict.view_lesson_sub;
+            } else if (view === 'mission') {
+                document.getElementById('missionContent').classList.remove('hidden');
+                document.getElementById('allLessonsSection').classList.add('hidden');
+                document.getElementById('viewTitle').innerText = dict.view_mission_title;
+                document.getElementById('viewSubtitle').innerText = dict.view_mission_sub;
+                currentQuestion = 1;
+                correctAnswersCount = 0;
+                wrongAnswersCount = 0;
+                timeLeft = 180;
+                startTimer();
+                renderQuestion();
+            } else if (view === 'result') {
+                document.getElementById('resultContent').classList.remove('hidden');
+                document.getElementById('allLessonsSection').classList.add('hidden');
+                document.getElementById('viewTitle').innerText = dict.view_result_title;
+                document.getElementById('viewSubtitle').innerText = dict.view_result_sub;
+            }
+        }
+
+        function startMission() {
+            switchView('mission');
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+                    const s = String(timeLeft % 60).padStart(2, '0');
+                    const timerEl = document.getElementById('missionTimer');
+                    if (timerEl) timerEl.innerText = `${m}:${s}`;
+                } else {
+                    clearInterval(timerInterval);
+                    showResult(false);
+                }
+            }, 1000);
+        }
+
+        function renderQuestion() {
+            const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.uk;
+            const qData = dict.questions[currentQuestion - 1];
+            document.getElementById('questionCounter').innerText = dict.q_counter(currentQuestion, totalQuestions);
+            document.getElementById('questionTitle').innerText = qData.q;
+            document.getElementById('missionProgressBar').style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+            document.getElementById('missionFeedback').classList.add('hidden');
+            document.getElementById('answersContainer').classList.remove('hidden');
+            document.getElementById('missionChartImage').innerHTML = chartSVGs[currentQuestion - 1];
+        }
+
+        function answerMission(choice) {
+            const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.uk;
+            const qData = dict.questions[currentQuestion - 1];
+            const isCorrect = choice === qData.correct;
+
+            if (isCorrect) correctAnswersCount++;
+            else wrongAnswersCount++;
+
+            document.getElementById('answersContainer').classList.add('hidden');
+            const feedback = document.getElementById('missionFeedback');
+            feedback.classList.remove('hidden');
+
+            const badge = document.getElementById('feedbackBadge');
+            if (isCorrect) {
+                badge.className = 'inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-brand-green/20 border border-brand-green text-brand-green font-bold text-sm';
+                badge.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${dict.correct_badge}`;
+            } else {
+                badge.className = 'inline-flex items-center gap-2 px-4 py-1.5 rounded-xl bg-brand-red/20 border border-brand-red text-brand-red font-bold text-sm';
+                badge.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> ${dict.wrong_badge}`;
+            }
+
+            document.getElementById('explanationText').innerText = qData.explanation;
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResult(true);
+            }
+        }
+
+        function updateResultLabels() {
+            const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.uk;
+            const card = document.getElementById('resultCard');
+            const iconBox = document.getElementById('resultIconBox');
+            const statusText = document.getElementById('resultStatusText');
+            const scoreText = document.getElementById('resultScoreText');
+
+            document.getElementById('correctCount').innerText = String(correctAnswersCount);
+            document.getElementById('wrongCount').innerText = String(wrongAnswersCount);
+
+            if (lastMissionCompleted && correctAnswersCount >= 3) {
+                card.className = 'glass-card rounded-3xl p-6 sm:p-12 border-2 border-brand-green/50 shadow-[0_0_50px_rgba(0,255,102,0.2)] text-center space-y-6';
+                iconBox.className = 'w-20 h-20 rounded-full bg-brand-green/20 border-2 border-brand-green text-brand-green flex items-center justify-center text-4xl mx-auto shadow-lg';
+                iconBox.innerHTML = '<i class="fa-solid fa-check"></i>';
+                statusText.innerText = dict.res_success;
+                statusText.className = 'text-base sm:text-lg font-bold mt-1 uppercase tracking-widest text-brand-green';
+            } else {
+                card.className = 'glass-card rounded-3xl p-6 sm:p-12 border-2 border-brand-red/50 shadow-[0_0_50px_rgba(255,30,39,0.2)] text-center space-y-6';
+                iconBox.className = 'w-20 h-20 rounded-full bg-brand-red/20 border-2 border-brand-red text-brand-red flex items-center justify-center text-4xl mx-auto shadow-lg';
+                iconBox.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                statusText.innerText = timeLeft === 0 ? dict.res_timeout : dict.res_low_score;
+                statusText.className = 'text-base sm:text-lg font-bold mt-1 uppercase tracking-widest text-brand-red';
+            }
+            scoreText.innerText = `${correctAnswersCount}/${totalQuestions}`;
+        }
+
+        function showResult(completed) {
+            lastMissionCompleted = completed;
+            clearInterval(timerInterval);
+            switchView('result');
+            updateResultLabels();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTranslations(currentLang);
+        });
+    </script>
+</body>
+</html>

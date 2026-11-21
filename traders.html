@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="uk" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title id="pageTitle">Трейдери Команди 📈 | Bavartza Trading</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff1e27'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-main: #050507;
+            --bg-card: rgba(12, 12, 17, 0.88);
+            --border-glass: rgba(255, 30, 39, 0.25);
+            --border-glass-bright: rgba(255, 30, 39, 0.8);
+            --glass-blur: blur(18px);
+            --box-shadow-glow: 0 15px 45px -10px rgba(255, 30, 39, 0.45);
+            --box-shadow-card: 0 18px 40px 0 rgba(0, 0, 0, 0.85);
+            --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-reveal: 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: clip;
+            max-width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: #ffffff;
+            min-height: 100dvh;
+            background-image:
+                radial-gradient(circle at 50% -5%, rgba(255, 30, 39, 0.22) 0%, rgba(139, 0, 0, 0.08) 38%, rgba(5, 5, 7, 1) 75%),
+                radial-gradient(circle at 12% 55%, rgba(255, 30, 39, 0.09) 0%, transparent 45%),
+                radial-gradient(circle at 88% 75%, rgba(255, 30, 39, 0.11) 0%, transparent 45%),
+                linear-gradient(rgba(255, 30, 39, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 30, 39, 0.04) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+            background-attachment: scroll;
+            overflow-x: clip;
+            max-width: 100%;
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                background-attachment: fixed;
+            }
+        }
+
+        h1, h2, h3, h4, p, span, a, button, div {
+            overflow-wrap: break-word;
+            word-break: normal;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--box-shadow-card), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+            transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+            max-width: 100%;
+        }
+
+        .glass-card:hover {
+            border-color: var(--border-glass-bright);
+            box-shadow: var(--box-shadow-glow), inset 0 1px 0 0 rgba(255, 30, 39, 0.25);
+            transform: translateY(-6px);
+        }
+
+        .btn-bavartza-red {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff1e27 0%, #990006 100%);
+            border: 1px solid rgba(255, 100, 105, 0.35);
+            box-shadow: 0 0 28px rgba(255, 30, 39, 0.45);
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .btn-bavartza-red:hover {
+            box-shadow: 0 0 42px rgba(255, 30, 39, 0.85);
+            transform: translateY(-3px) scale(1.015);
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(28px) scale(0.985);
+            transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.08s; }
+        .reveal-delay-2 { transition-delay: 0.16s; }
+        .reveal-delay-3 { transition-delay: 0.24s; }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #ff1e27 0%, #990006 100%);
+            color: #ffffff;
+            box-shadow: 0 0 14px rgba(255, 30, 39, 0.55);
+        }
+
+        @media (max-width: 1023px) {
+            .glass-card:hover,
+            .btn-bavartza-red:hover {
+                transform: none;
+            }
+            a, button {
+                touch-action: manipulation;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-red-600 selection:text-white relative">
+
+    <!-- TOP NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-[#07070a]/90 border-b border-red-600/30 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.8)] w-full">
+        <div class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 min-h-20 py-2 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 sm:gap-3">
+            <a href="index.html" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+                <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black border-2 border-red-600 flex items-center justify-center text-red-500 shadow-[0_0_20px_rgba(255,30,39,0.6)] group-hover:scale-105 transition-all duration-300 flex-shrink-0">
+                    <i class="fa-solid fa-arrow-left text-sm sm:text-lg"></i>
+                </div>
+                <span class="font-heading font-black text-[11px] sm:text-base text-white group-hover:text-red-500 transition-colors duration-300 tracking-wider whitespace-nowrap" data-i18n="back_home">НА ГОЛОВНУ</span>
+            </a>
+
+            <div class="flex items-center gap-2 sm:gap-6 flex-shrink-0">
+                <nav class="hidden md:flex items-center gap-6 font-semibold text-sm tracking-wide">
+                    <a href="bot.html" class="hover:text-red-500 transition-colors duration-300 flex items-center gap-2 whitespace-nowrap" data-i18n="nav_bot">
+                        <i class="fa-solid fa-robot text-red-500"></i> Сигнальний бот
+                    </a>
+                    <a href="academy.html" class="hover:text-red-500 transition-colors duration-300 flex items-center gap-2 whitespace-nowrap" data-i18n="nav_academy">
+                        <i class="fa-solid fa-graduation-cap text-red-500"></i> Академія
+                    </a>
+                    <a href="reviews.html" class="hover:text-red-500 transition-colors duration-300 flex items-center gap-2 whitespace-nowrap" data-i18n="nav_reviews">
+                        <i class="fa-solid fa-star text-red-500"></i> Відгуки
+                    </a>
+                </nav>
+
+                <!-- LANGUAGE SWITCHER (УКР | РУС | ENG) -->
+                <div class="flex items-center bg-black/85 border border-red-600/40 rounded-xl p-0.5 sm:p-1 gap-0.5 shadow-inner flex-shrink-0" role="group" aria-label="Language Selector">
+                    <button type="button" onclick="setLanguage('uk')" id="lang-btn-uk" class="lang-btn px-2 sm:px-2.5 py-1.5 min-h-[34px] rounded-lg text-[10px] sm:text-[11px] font-mono font-extrabold uppercase text-gray-300 hover:text-white transition cursor-pointer whitespace-nowrap">UA</button>
+                    <button type="button" onclick="setLanguage('ru')" id="lang-btn-ru" class="lang-btn px-2 sm:px-2.5 py-1.5 min-h-[34px] rounded-lg text-[10px] sm:text-[11px] font-mono font-extrabold uppercase text-gray-300 hover:text-white transition cursor-pointer whitespace-nowrap">RU</button>
+                    <button type="button" onclick="setLanguage('en')" id="lang-btn-en" class="lang-btn px-2 sm:px-2.5 py-1.5 min-h-[34px] rounded-lg text-[10px] sm:text-[11px] font-mono font-extrabold uppercase text-gray-300 hover:text-white transition cursor-pointer whitespace-nowrap">EN</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-10 flex-1 py-12 sm:py-14 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-12 sm:space-y-16">
+
+        <!-- HEADER TITLE -->
+        <section class="text-center relative reveal-on-scroll">
+            <div class="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 rounded-full bg-red-950/60 border border-red-500/50 text-red-500 text-xs sm:text-sm font-bold uppercase tracking-widest mb-6 shadow-[0_0_25px_rgba(255,30,39,0.25)]">
+                <i class="fa-solid fa-chart-line animate-pulse"></i> Traiding BavartzaWin 📈
+            </div>
+
+            <h1 class="font-heading font-black text-3xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white mb-6 leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+                <span data-i18n="title_1">НАШІ</span> <span class="text-red-500 drop-shadow-[0_0_30px_rgba(255,30,39,0.75)]" data-i18n="title_2">ТРЕЙДЕРИ</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-gray-300 text-base sm:text-xl font-medium leading-relaxed" data-i18n="subtitle">
+                Дивіться як наші топ-трейдери торгують наживо в TikTok, проводять ефіри та демонструють роботу бота по сигналах.
+            </p>
+        </section>
+
+        <!-- TRADERS GRID SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+
+            <!-- TRADER 1 -->
+            <div class="glass-card rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 border border-red-500/35 flex flex-col justify-between relative overflow-hidden reveal-on-scroll reveal-delay-1 group min-w-0">
+                <div>
+                    <div class="w-full h-64 sm:h-72 rounded-2xl overflow-hidden border border-red-500/35 mb-6 bg-black relative shadow-[0_10px_25px_rgba(0,0,0,0.8)]">
+                        <img src="./TRAIDERS/1.jpg" alt="BtradeX | Trading" onerror="this.src='https://placehold.co/600x400/0f1016/ff1e27?text=BtradeX+Trading'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-3 right-3 bg-emerald-500 text-black text-xs font-mono font-bold px-3 py-1 rounded-full shadow-md">
+                            PRO STREAMS
+                        </div>
+                    </div>
+
+                    <h3 class="font-heading font-black text-xl sm:text-2xl text-white mb-2">BtradeX | Trading💎</h3>
+                    <p class="text-xs font-mono text-emerald-400 font-bold mb-2 break-all"><span data-i18n="contact_label">Контакт:</span> <a href="https://t.me/+c5SoJNF6fzhkMmVi" target="_blank" rel="noopener noreferrer" class="underline hover:text-white transition-colors duration-300">@btradex_trader1</a></p>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-6 font-medium" data-i18n="trader_1_desc">
+                        📈 Ефіри та реальні сделки наживо щодня. Технічний аналіз ринку та торгові сесії за допомогою сигналів бота.
+                    </p>
+                </div>
+
+                <div class="space-y-3 pt-4 border-t border-red-500/20">
+                    <a href="https://t.me/+c5SoJNF6fzhkMmVi" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 min-h-[46px] rounded-xl bg-black/80 border border-red-500/40 hover:border-red-500 hover:bg-red-950/30 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md">
+                        <i class="fa-brands fa-telegram text-red-500 text-base"></i> <span data-i18n="trader_1_btn">Огляди та думки</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TRADER 2 -->
+            <div class="glass-card rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 border border-red-500/35 flex flex-col justify-between relative overflow-hidden reveal-on-scroll reveal-delay-2 group min-w-0">
+                <div>
+                    <div class="w-full h-64 sm:h-72 rounded-2xl overflow-hidden border border-red-500/35 mb-6 bg-black relative shadow-[0_10px_25px_rgba(0,0,0,0.8)]">
+                        <img src="./TRAIDERS/2.jpg" alt="DavidKing_Trader" onerror="this.src='https://placehold.co/600x400/0f1016/ff1e27?text=DavidKing_Trader'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-3 right-3 bg-blue-600 text-white text-xs font-mono font-bold px-3 py-1 rounded-full shadow-md">
+                            VIP LEADER
+                        </div>
+                    </div>
+
+                    <h3 class="font-heading font-black text-xl sm:text-2xl text-white mb-2">DavidKing_Trader💸</h3>
+                    <p class="text-xs font-mono text-blue-400 font-bold mb-2 break-all"><span data-i18n="contact_label">Контакт:</span> <a href="https://t.me/+-Y1QmFemvD1iODdi" target="_blank" rel="noopener noreferrer" class="underline hover:text-white transition-colors duration-300">@DavidKing_trader</a></p>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-6 font-medium" data-i18n="trader_2_desc">
+                        Експерт з прайс-секшну та системної торгівлі. Веде регулярні відеотрансляції в TikTok, демонструючи прибуткові угоди по боту.
+                    </p>
+                </div>
+
+                <div class="space-y-3 pt-4 border-t border-red-500/20">
+                    <a href="https://t.me/+-Y1QmFemvD1iODdi" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 min-h-[46px] rounded-xl bg-black/80 border border-red-500/40 hover:border-red-500 hover:bg-red-950/30 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md">
+                        <i class="fa-brands fa-telegram text-red-500 text-base"></i> <span data-i18n="trader_2_btn">Розбори та сетапи</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TRADER 3 -->
+            <div class="glass-card rounded-[28px] sm:rounded-[32px] p-5 sm:p-6 border border-red-500/35 flex flex-col justify-between relative overflow-hidden reveal-on-scroll reveal-delay-3 group min-w-0">
+                <div>
+                    <div class="w-full h-64 sm:h-72 rounded-2xl overflow-hidden border border-red-500/35 mb-6 bg-black relative shadow-[0_10px_25px_rgba(0,0,0,0.8)]">
+                        <img src="./TRAIDERS/3.jpg" alt="EmilyTrading" onerror="this.src='https://placehold.co/600x400/0f1016/ff1e27?text=EmilyTrading'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-3 right-3 bg-red-600 text-white text-xs font-mono font-bold px-3 py-1 rounded-full shadow-md">
+                            LIVE 24/7
+                        </div>
+                    </div>
+
+                    <h3 class="font-heading font-black text-xl sm:text-2xl text-white mb-2">⚜️ EmilyTrading ⚜️</h3>
+                    <p class="text-xs font-mono text-red-400 font-bold mb-2 break-all"><span data-i18n="contact_label">Контакт:</span> <a href="https://t.me/+kxYE3VL7lME2ZDMy" target="_blank" rel="noopener noreferrer" class="underline hover:text-white transition-colors duration-300">@emiliyasergeevna</a></p>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-6 font-medium" data-i18n="trader_3_desc">
+                        Професійний трейдер команди. Показує живі результати торгівлі в TikTok та розбирає роботу сигнального бота в реальному часі.
+                    </p>
+                </div>
+
+                <div class="space-y-3 pt-4 border-t border-red-500/20">
+                    <a href="https://t.me/+kxYE3VL7lME2ZDMy" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 min-h-[46px] rounded-xl bg-black/80 border border-red-500/40 hover:border-red-500 hover:bg-red-950/30 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-md">
+                        <i class="fa-brands fa-telegram text-red-500 text-base"></i> <span data-i18n="trader_3_btn">Робоче місце</span>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CONTACT / SUPPORT SECTION -->
+        <section class="glass-card rounded-[28px] sm:rounded-[32px] p-6 sm:p-12 text-center border-2 border-red-500/50 shadow-[0_0_50px_rgba(255,30,39,0.2)] relative overflow-hidden max-w-4xl mx-auto reveal-on-scroll">
+            <h3 class="font-heading font-black text-xl sm:text-3xl text-white uppercase mb-4" data-i18n="support_heading">
+                Контакти та підтримка
+            </h3>
+            <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto mb-8 font-medium" data-i18n="support_desc">
+                Маєш питання щодо роботи сигнального бота або хочеш приєднатися до команди?
+            </p>
+            <a href="https://t.me/BavartzaTradingSignalBot" target="_blank" rel="noopener noreferrer" class="btn-bavartza-red w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-black text-sm sm:text-lg uppercase tracking-wider text-white shadow-2xl">
+                <i class="fa-brands fa-telegram text-xl sm:text-2xl"></i>
+                <span data-i18n="support_btn">Бот по якому торгуємо</span>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 bg-black/95 border-t border-red-600/25 py-8 sm:py-10 px-4 text-center text-xs sm:text-sm text-gray-400 font-mono mt-14 sm:mt-20" data-i18n="footer_text">
+        © 2026 Traiding BavartzaWin 📈. Всі права захищено.
+    </footer>
+
+    <script>
+        const TRANSLATIONS = {
+            uk: {
+                page_title: "Трейдери Команди 📈 | Bavartza Trading",
+                back_home: "НА ГОЛОВНУ",
+                nav_bot: "Сигнальний бот",
+                nav_academy: "Академія",
+                nav_reviews: "Відгуки",
+                title_1: "НАШІ",
+                title_2: "ТРЕЙДЕРИ",
+                subtitle: "Дивіться як наші топ-трейдери торгують наживо в TikTok, проводять ефіри та демонструють роботу бота по сигналах.",
+                contact_label: "Контакт:",
+                trader_1_desc: "📈 Ефіри та реальні сделки наживо щодня. Технічний аналіз ринку та торгові сесії за допомогою сигналів бота.",
+                trader_1_btn: "Огляди та думки",
+                trader_2_desc: "Експерт з прайс-секшну та системної торгівлі. Веде регулярні відеотрансляції в TikTok, демонструючи прибуткові угоди по боту.",
+                trader_2_btn: "Розбори та сетапи",
+                trader_3_desc: "Професійний трейдер команди. Показує живі результати торгівлі в TikTok та розбирає роботу сигнального бота в реальному часі.",
+                trader_3_btn: "Робоче місце",
+                support_heading: "Контакти та підтримка",
+                support_desc: "Маєш питання щодо роботи сигнального бота або хочеш приєднатися до команди?",
+                support_btn: "Бот по якому торгуємо",
+                footer_text: "© 2026 Traiding BavartzaWin 📈. Всі права захищено."
+            },
+            ru: {
+                page_title: "Трейдеры Команды 📈 | Bavartza Trading",
+                back_home: "НА ГЛАВНУЮ",
+                nav_bot: "Сигнальный бот",
+                nav_academy: "Академия",
+                nav_reviews: "Отзывы",
+                title_1: "НАШИ",
+                title_2: "ТРЕЙДЕРЫ",
+                subtitle: "Смотрите, как наши топ-трейдеры торгуют вживую в TikTok, проводят эфиры и демонстрируют работу бота по сигналам.",
+                contact_label: "Контакт:",
+                trader_1_desc: "📈 Эфиры и реальные сделки вживую каждый день. Технический анализ рынка и торговые сессии с помощью сигналов бота.",
+                trader_1_btn: "Обзоры и мысли",
+                trader_2_desc: "Эксперт по прайс-экшн и системной торговле. Ведёт регулярные видеотрансляции в TikTok, демонстрируя прибыльные сделки по боту.",
+                trader_2_btn: "Разборы и сетапы",
+                trader_3_desc: "Профессиональный трейдер команды. Показывает живые результаты торговли в TikTok и разбирает работу сигнального бота в реальном времени.",
+                trader_3_btn: "Рабочее место",
+                support_heading: "Контакты и поддержка",
+                support_desc: "Есть вопросы по работе сигнального бота или хочешь присоединиться к команде?",
+                support_btn: "Бот, по которому торгуем",
+                footer_text: "© 2026 Traiding BavartzaWin 📈. Все права защищены."
+            },
+            en: {
+                page_title: "Team Traders 📈 | Bavartza Trading",
+                back_home: "GO HOME",
+                nav_bot: "Signal Bot",
+                nav_academy: "Academy",
+                nav_reviews: "Reviews",
+                title_1: "OUR",
+                title_2: "TRADERS",
+                subtitle: "Watch how our top traders trade live on TikTok, host streams, and showcase the signal bot in real market action.",
+                contact_label: "Contact:",
+                trader_1_desc: "📈 Daily live streams and real trades in real time. Technical market analysis and trading sessions powered by bot signals.",
+                trader_1_btn: "Reviews & Insights",
+                trader_2_desc: "Price action and systematic trading specialist. Hosts regular TikTok broadcasts demonstrating profitable trades using the bot.",
+                trader_2_btn: "Breakdowns & Setups",
+                trader_3_desc: "Professional team trader. Shows live trading results on TikTok and breaks down the signal bot's performance in real time.",
+                trader_3_btn: "Trading Desk",
+                support_heading: "Contacts & Support",
+                support_desc: "Have questions about how the signal bot works or want to join the team?",
+                support_btn: "The Bot We Trade With",
+                footer_text: "© 2026 Traiding BavartzaWin 📈. All rights reserved."
+            }
+        };
+
+        let currentLang = localStorage.getItem('bavartza_lang') || 'uk';
+
+        function applyTranslations(lang) {
+            const dict = TRANSLATIONS[lang] || TRANSLATIONS.uk;
+            document.documentElement.lang = lang === 'en' ? 'en' : (lang === 'ru' ? 'ru' : 'uk');
+            document.title = dict.page_title;
+
+            document.querySelectorAll('[data-i18n]').forEach((el) => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) {
+                    el.innerText = dict[key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach((btn) => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`lang-btn-${lang}`);
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('bavartza_lang', lang);
+            applyTranslations(lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTranslations(currentLang);
+            const elements = document.querySelectorAll('.reveal-on-scroll');
+            if (!('IntersectionObserver' in window)) {
+                elements.forEach((el) => el.classList.add('is-visible'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+            elements.forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
